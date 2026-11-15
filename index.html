@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>鏡頭語言知識庫 | 還在往上 Pan？新手該懂的影視基本運鏡</title>
+  <meta name="description" content="專業影視動態運鏡指南，深入解析 Pan、Tilt、Boom、Dolly 四大基本鏡頭語言，搭配互動觀景窗模擬器，帶你搞懂運鏡本質與電影敘事力量。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 頂部導航列 -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">🎬</div>
+        <div class="brand-title">
+          CINELANG
+          <span>CAMERA LANGUAGE GUIDE</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#simulator">運鏡模擬器</a></li>
+          <li><a href="#techniques">四大基本運鏡</a></li>
+          <li><a href="#history">影史起源 (1903)</a></li>
+          <li><a href="#comparisons">避坑對比</a></li>
+          <li><a href="#simulator" class="nav-cta">立即體驗</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 本機檔案環境 (file://) 智慧診斷與免跳轉直播提示條 -->
+  <div id="file-env-banner" class="file-env-banner" style="display: none;">
+    <div class="container file-env-content">
+      <span class="file-env-icon">💡</span>
+      <div class="file-env-msg">
+        <strong>偵測到您正以本機檔案 (file://) 開啟：</strong>
+        若點擊影片彈窗顯示「錯誤 153」，此為 YouTube 官方對本機檔案的安全限制。
+        雙擊專案目錄下的 <code>【一鍵啟動網站預覽.bat】</code> 即可直接在此頁面免跳轉流暢播放！或點擊彈窗內的「精準時間軸」按鈕前往觀看。
+      </div>
+      <button type="button" class="file-env-close" id="file-env-close" title="關閉提示條">✕</button>
+    </div>
+  </div>
+
+  <!-- Hero 英雄主視覺 -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        CINEMATOGRAPHY ESSENTIALS // 影視動態攝影指南
+      </div>
+
+      <h1 class="hero-title">
+        還在往上 <span class="highlight">Pan</span>？<br>
+        新手該懂的基本鏡頭語言
+      </h1>
+
+      <p class="hero-quote">
+        「東西從來都不該只是『拍到就好』。如果不知該怎麼動，不如不要動。」
+      </p>
+
+      <p class="hero-desc">
+        拿起攝影機看到什麼就拍什麼，連基本的運鏡本質都沒搞懂，只會留下破碎凌亂的片段。在動態攝影中，機位旋轉與空間位移代表著完全不同的敘事心理。懂得運用基礎運鏡，哪怕手邊只有最簡單的工具，也能營造出極具張力的電影感。
+      </p>
+
+      <div class="hero-actions">
+        <a href="#simulator" class="btn btn-primary">進入即時運鏡模擬器 ▾</a>
+        <a href="#techniques" class="btn btn-secondary">閱讀四大運鏡詳解</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 互動式運鏡模擬器 (Interactive Simulator) -->
+  <section class="simulator-section" id="simulator">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">INTERACTIVE VIEWFINDER HUD</div>
+        <h2 class="section-title">即時互動運鏡模擬器</h2>
+        <p class="section-subtitle">點選下方運鏡模式，同步觀察「導演觀景窗視角（第一人稱）」與「攝影機軌道機位（第三人稱）」的運動差異。</p>
+      </div>
+
+      <div class="simulator-card">
+        <!-- 運鏡切換控制器 -->
+        <div class="sim-controls">
+          <button class="sim-btn active" data-mode="pan">
+            <span>↔</span> Pan (水平橫搖)
+          </button>
+          <button class="sim-btn" data-mode="tilt">
+            <span>↕</span> Tilt (垂直俯仰)
+          </button>
+          <button class="sim-btn" data-mode="boom">
+            <span>🏗</span> Boom (升降運鏡)
+          </button>
+          <button class="sim-btn" data-mode="dolly">
+            <span>🚂</span> Dolly (軌道推拉)
+          </button>
+          <button class="sim-btn" data-mode="static">
+            <span>⚓</span> Static (固定鏡頭)
+          </button>
+        </div>
+
+        <!-- 雙視窗展示區 -->
+        <div class="sim-display-grid">
+          <!-- 1. 導演觀景窗 HUD (Viewfinder) -->
+          <div class="viewfinder-wrapper">
+            <!-- HUD 資訊抬頭顯示 -->
+            <div class="hud-overlay">
+              <div class="hud-top">
+                <div class="hud-rec">
+                  <span class="hud-rec-dot"></span>
+                  <span>REC [STANDBY]</span>
+                </div>
+                <div>24 FPS &nbsp;|&nbsp; 4K DCI &nbsp;|&nbsp; 180° SHUTTER</div>
+              </div>
+
+              <!-- 十字對焦中心線 -->
+              <div class="hud-center">
+                <div class="hud-crosshair"></div>
+              </div>
+
+              <div class="hud-bottom">
+                <div>ISO 800 &nbsp;|&nbsp; 5600K &nbsp;|&nbsp; f/2.8</div>
+                <div id="hud-timecode">01:02:14:00</div>
+              </div>
+            </div>
+
+            <!-- 視差多圖層動態場景 -->
+            <div class="viewfinder-stage">
+              <!-- 背景層：太陽與遠山 -->
+              <div class="stage-layer layer-bg">
+                <div class="layer-bg-sun"></div>
+                <div class="layer-mountains">
+                  <div class="mountain m1"></div>
+                  <div class="mountain m2"></div>
+                  <div class="mountain m3"></div>
+                </div>
+              </div>
+
+              <!-- 中景層：主體人物/目標物 -->
+              <div class="stage-layer layer-midground">
+                <div class="stage-subject">
+                  <div class="subject-head"></div>
+                  <span class="subject-tag">SUBJECT #01</span>
+                </div>
+              </div>
+
+              <!-- 前景層：前景框架 (突顯視差深度) -->
+              <div class="stage-layer layer-foreground">
+                <div class="fg-frame-left"></div>
+                <div class="fg-frame-right"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. 第三人稱攝影機位視窗 (Camera Rig View) -->
+          <div class="rig-view-wrapper">
+            <div class="rig-header">
+              <span class="rig-title">📷 外部機位運動狀態 (RIG VIEW)</span>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-amber);">SENSOR AXIS</span>
+            </div>
+
+            <div class="rig-stage">
+              <div class="camera-track"></div>
+              <div class="camera-model">
+                <div class="camera-lens"></div>
+                <div class="camera-beam"></div>
+                <div class="camera-tripod"></div>
+              </div>
+            </div>
+
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">
+              ● 觀察：旋轉 (Rotation) 僅動角度，位移 (Translation) 改變空間座標
+            </div>
+          </div>
+        </div>
+
+        <!-- 即時解析資訊欄 -->
+        <div class="sim-info-bar">
+          <div class="sim-info-action" id="sim-current-action">Pan (水平橫搖)</div>
+          <div class="sim-info-desc" id="sim-current-desc">機位固定不動，鏡頭左右水平轉動。注意背景與主體呈水平平移，如同轉頭環顧四周。</div>
+          <div class="sim-info-type" id="sim-current-type">原地旋轉 (Rotation - Y 軸)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四大核心運鏡卡片區 (Techniques Grid) -->
+  <section class="techniques-section" id="techniques">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">CORE MOVEMENTS</div>
+        <h2 class="section-title">四大基本動態運鏡解析</h2>
+        <p class="section-subtitle">從物理動態、人體比喻到敘事心理，扎實掌握每一顆鏡頭該如何表現。</p>
+      </div>
+
+      <div class="tech-grid" id="tech-cards-grid">
+        <!-- 由 js/app.js 動態渲染自 js/data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 電影史起源 (Historical Milestone) -->
+  <section class="history-section" id="history">
+    <div class="container">
+      <div class="history-card">
+        <div class="history-badge-block">
+          <div class="history-year">1903</div>
+          <div class="history-tag">HISTORIC MILESTONE</div>
+        </div>
+
+        <div class="history-content">
+          <h3>影史首創平移運鏡 ——《火車大劫案》</h3>
+          <p>
+            在連續影像技術誕生初期，受限於繁重設備與固定腳架，攝影機只能像呆板的觀眾一樣「定點凝視」。直到 1903 年，導演 <strong>Edwin S. Porter</strong> 與攝影師 <strong>Blair Smith</strong> 在經典作品《火車大劫案》(The Great Train Robbery) 中，首創了人類電影史上的第一個平移運鏡：<strong>"Pan"</strong>。
+          </p>
+          <p>
+            從那一刻起，動態影像不再只是單純記錄眼前發生的事件，攝影師開始能自主調配觀眾的視線與好奇心，開啟了百年電影「用運鏡說故事」的黃金時代。
+          </p>
+          <div class="history-meta" style="margin-top: 16px; align-items: center;">
+            <span>🎬 導演：Edwin S. Porter</span>
+            <span>🎥 攝影：Blair Smith</span>
+            <span>🎞 作品：《The Great Train Robbery》</span>
+            <button type="button" class="btn-play-clip btn-case-action" style="margin-left: auto;"
+              data-title="《火車大劫案》(The Great Train Robbery, 1903)"
+              data-embed="https://www.youtube.com/embed/-WYYtN13Vfk?start=210&autoplay=1"
+              data-url="https://www.youtube.com/watch?v=-WYYtN13Vfk&t=210s"
+              data-start="210"
+              data-desc="劫匪在山林逃跑時，攝影機首次打破固定腳架束縛，左右水平平移追隨馬匹奔馳。">
+              ▶ 觀賞影史首創 Pan 片段 (210s)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 避坑指南與核心哲學 (Comparisons & Philosophy) -->
+  <section class="philosophy-section" id="comparisons">
+    <div class="container">
+      <!-- 導演金句 Banner -->
+      <div class="quote-banner">
+        <h3>「如果不知該怎麼『動』，不如不要動。」</h3>
+        <p>
+          即使到了如今，有了空拍機、三軸穩定器等強大科技產品加持，若缺乏鏡頭語言思維，畫面依然只是隨意拼湊。固定鏡頭（Static Shot）同樣蘊含巨大的靜謐力量。唯有明白動態的動機，鏡頭運動才能真正為故事加分。
+        </p>
+      </div>
+
+      <div class="section-head">
+        <div class="section-tag">PITFALLS & COMPARISONS</div>
+        <h2 class="section-title">經典對比矩陣與新手雷區</h2>
+        <p class="section-subtitle">徹底杜絕觀念混淆，建立專業影視創作者的精準思維。</p>
+      </div>
+
+      <div class="comparisons-grid" id="comparisons-grid">
+        <!-- 由 js/app.js 動態渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <strong>CINELANG</strong> // 鏡頭語言基礎知識庫專案<br>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">
+          參考資料來源：<a href="https://jacksonlin.net/20190417-%E5%9F%BA%E6%9C%AC%E9%8F%A1%E9%A0%AD%E8%AA%9E%E8%A8%80/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-amber); text-decoration: underline;">Jackson Lin《還在往上 Pan ? 新手該先瞭解的基本鏡頭語言》</a>
+        </span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.md">index.md 案例總庫</a>
+        <a href="AGENTS.md">AGENTS.md 協作規範</a>
+        <a href="README.md">README 專案說明</a>
+        <a href="#simulator">返回頂部 ⇡</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 電影片段觀看彈窗 (Video Player Modal) -->
+  <div class="video-modal-backdrop" id="video-modal" aria-hidden="true">
+    <div class="video-modal-dialog">
+      <div class="video-modal-header">
+        <div>
+          <div class="video-modal-title" id="video-modal-title">🎬 經典影視片段觀賞</div>
+          <div class="video-modal-sub" id="video-modal-sub">🎥 官方高畫質解析示範</div>
+        </div>
+        <button class="video-modal-close" id="video-modal-close" aria-label="關閉視窗">✕</button>
+      </div>
+
+      <div class="video-modal-body">
+        <div class="video-iframe-container">
+          <iframe id="video-modal-iframe" src="" title="Cinematic Scene Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <!-- 精準時間軸控制列 (保證 100% 精準時間戳跳轉，避免誤觸 YouTube 播放器無時間軸按鈕) -->
+        <div class="modal-timecode-bar" id="modal-timecode-bar">
+          <div class="timecode-info">
+            <span class="timecode-label">⏱️ 片段時間戳：</span>
+            <span class="timecode-val" id="modal-timecode-display">00:15 處起</span>
+          </div>
+          <div class="timecode-actions">
+            <a id="video-modal-direct-jump-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-timecode-jump" title="前往 YouTube 直接以精準時間軸播放">
+              ▶ 以精準時間軸開啟觀看 ↗
+            </a>
+            <button type="button" class="btn-timecode-copy" id="btn-modal-copy-link" title="複製精準時間播放連結">
+              📋 複製時間連結
+            </button>
+          </div>
+        </div>
+
+        <!-- 觀影提示與免跳轉說明 -->
+        <div class="video-modal-tip" id="video-modal-tip">
+          <span id="tip-badge-icon">ℹ️ 觀影提示：</span>
+          <span id="tip-message-text">若畫面出現「錯誤 153」，此為 YouTube 對本機 file:// 的限制。雙擊目錄下的 <strong>【一鍵啟動網站預覽.bat】</strong> 即可直接在此頁面免跳轉播放！</span>
+        </div>
+      </div>
+
+      <div class="video-modal-footer">
+        <p id="video-modal-scene-desc" class="video-modal-desc"></p>
+        <div class="video-modal-buttons">
+          <a id="video-modal-external-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary video-modal-ext-btn">
+            前往 YouTube 觀看原片 ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮動 Toast 提示 -->
+  <div class="copy-toast" id="copy-toast">已複製精準時間連結！</div>
+
+  <!-- 載入資料與邏輯指令碼 -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
